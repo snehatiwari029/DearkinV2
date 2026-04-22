@@ -4,8 +4,11 @@ import { useState } from "react";
 import CalculatorForm from "./CalculatorForm";
 import BenefitResult from "./BenefitResult";
 import WeeklyTimeline from "./WeeklyTimeline";
+import IncomeGapBanner from "@/components/IncomeGapBanner";
+import EmailCapture from "@/components/EmailCapture";
 import { ClaimInput, CalculationResult } from "@/lib/pfml/types";
 import { calculate } from "@/lib/pfml/wa-calculator";
+import { trackEvent } from "@/lib/analytics";
 
 export default function CalculatorShell() {
   const [result, setResult] = useState<CalculationResult | null>(null);
@@ -16,6 +19,13 @@ export default function CalculatorShell() {
     try {
       const calcResult = calculate(input);
       setResult(calcResult);
+      if (calcResult.isEligible) {
+        trackEvent("calculator_completed", {
+          employer: calcResult.employer.name,
+          salaryBand: calcResult.salaryBand,
+          hasGap: calcResult.totalIncomeGap > 0,
+        });
+      }
     } finally {
       setIsLoading(false);
     }
@@ -51,6 +61,15 @@ export default function CalculatorShell() {
                   <BenefitResult result={result} />
                 </div>
 
+                {result.isEligible && result.totalIncomeGap > 0 && (
+                  <div className="bg-white rounded-card border border-cream-dark p-6 lg:p-8">
+                    <h2 className="font-semibold text-ink mb-6">
+                      Closing Your Income Gap
+                    </h2>
+                    <IncomeGapBanner result={result} />
+                  </div>
+                )}
+
                 {result.isEligible && result.timeline.length > 0 && (
                   <div className="bg-white rounded-card border border-cream-dark p-6 lg:p-8">
                     <WeeklyTimeline
@@ -59,12 +78,18 @@ export default function CalculatorShell() {
                     />
                   </div>
                 )}
+
+                {result.isEligible && (
+                  <EmailCapture result={result} />
+                )}
               </div>
             ) : (
               <div className="bg-cream rounded-card border border-cream-dark p-8 text-center h-full flex items-center justify-center min-h-[200px]">
                 <div>
                   <p className="text-2xl mb-3">📊</p>
-                  <p className="text-ink-mid font-medium">Fill in your details to see your personalised leave income breakdown.</p>
+                  <p className="text-ink-mid font-medium">
+                    Fill in your details to see your personalised leave income breakdown.
+                  </p>
                 </div>
               </div>
             )}
@@ -72,7 +97,8 @@ export default function CalculatorShell() {
         </div>
 
         <p className="text-xs text-ink-light text-center mt-10">
-          Not legal or financial advice. WA PFML estimates based on 2026 rate tables. Verify with your HR and the WA Employment Security Department.
+          Not legal or financial advice. WA PFML estimates based on 2026 rate tables.
+          Verify with your HR and the WA Employment Security Department.
         </p>
       </div>
     </div>

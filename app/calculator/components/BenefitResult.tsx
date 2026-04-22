@@ -55,18 +55,7 @@ export default function BenefitResult({ result }: BenefitResultProps) {
         </div>
       </div>
 
-      {hasGap ? (
-        <div className="bg-red-50 border border-red-200 rounded-card p-5">
-          <p className="text-sm font-semibold text-red-700 mb-1">Income Gap Detected</p>
-          <p className="text-2xl font-serif text-red-600 mb-2">
-            {formatCurrency(result.totalIncomeGap)} total
-          </p>
-          <p className="text-sm text-red-500">
-            There are weeks where your income falls below your full salary.
-            See the timeline below for week-by-week breakdown.
-          </p>
-        </div>
-      ) : (
+      {!hasGap && (
         <div className="bg-sage-light border border-sage/20 rounded-card p-5">
           <p className="text-sage font-semibold">✓ No income gap</p>
           <p className="text-sm text-sage-dark mt-1">
