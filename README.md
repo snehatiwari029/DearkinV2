@@ -36,3 +36,15 @@ and no selling of family data.
 npm install
 cp .env.example .env.local   # fill in your Supabase URL + anon key
 npm run dev
+
+## How it was built
+
+Dearkin was built with AI-assisted development (Lovable, Claude, Cursor) —
+directing AI coding tools to implement the product, with human review and
+testing throughout. It started from a PRFAQ and full product spec before any
+code was written.
+
+## Status
+
+Personal project, live at https://dearkin.com. Actively evolving.
+
