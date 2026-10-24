@@ -1,0 +1,135 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-forest: var(--forest);
+  --color-forest-foreground: var(--forest-foreground);
+  --color-sage: var(--sage);
+  --color-sage-foreground: var(--sage-foreground);
+  --color-amber: var(--amber);
+  --color-amber-foreground: var(--amber-foreground);
+  --color-coral: var(--coral);
+  --color-coral-foreground: var(--coral-foreground);
+  --color-teal: var(--teal);
+  --color-teal-foreground: var(--teal-foreground);
+  --shadow-soft: var(--shadow-soft);
+  --font-serif: "Newsreader", Georgia, serif;
+  --font-sans: "Albert Sans", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1.25rem;
+  --background: #F3F6F1;
+  --foreground: #1A2B22;
+  --card: #FFFFFF;
+  --card-foreground: #1A2B22;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A2B22;
+  --primary: #1F5A42;
+  --primary-foreground: #F6FAF6;
+  --secondary: #E8EFE6;
+  --secondary-foreground: #1F5A42;
+  --muted: #EBF0E9;
+  --muted-foreground: #5B6B61;
+  --accent: #E3EDE4;
+  --accent-foreground: #174531;
+  --destructive: #B4452A;
+  --destructive-foreground: #FFFFFF;
+  --border: #D8DFD7;
+  --input: #D8DFD7;
+  --ring: #1F5A42;
+  --forest: #174531;
+  --forest-foreground: #EAF3EC;
+  --sage: #D7E8DB;
+  --sage-foreground: #1F5A42;
+  --amber: #F7DFAE;
+  --amber-foreground: #6E4B0C;
+  --coral: #F0C9BA;
+  --coral-foreground: #87361F;
+  --teal: #CFE7E3;
+  --teal-foreground: #1D5953;
+  --shadow-soft: 0 1px 2px rgba(23, 69, 49, 0.04), 0 8px 24px -12px rgba(23, 69, 49, 0.14);
+  --chart-1: #1F5A42; --chart-2: #D7E8DB; --chart-3: #F7DFAE; --chart-4: #F0C9BA; --chart-5: #CFE7E3;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #1A2B22;
+  --sidebar-primary: #1F5A42;
+  --sidebar-primary-foreground: #F6FAF6;
+  --sidebar-accent: #E3EDE4;
+  --sidebar-accent-foreground: #174531;
+  --sidebar-border: #D8DFD7;
+  --sidebar-ring: #1F5A42;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+}

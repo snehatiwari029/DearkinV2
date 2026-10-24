@@ -1,50 +1,29 @@
-# DearkinV2
-# Dearkin — Privacy-First Childcare OS
+# Welcome to your Lovable project
 
-**Build your village with confidence.**
+This project was built with [Lovable](https://lovable.dev).
 
-Dearkin is a privacy-first childcare organizer for parents and nannies. It helps
-parents coordinate childcare — caregivers, schedules, and kids' information —
-while keeping sensitive family data private and under the parent's control.
+## Build with Lovable
 
-🌐 Live site: https://dearkin.com
+Open your project in the [Lovable editor](https://lovable.dev) and keep building.
 
-## Why privacy-first
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
+- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
 
-Sharing kids' information with caregivers is necessary — but parents should
-control exactly what each caregiver sees. Dearkin is designed around that
-principle: role-based views (parents vs. caregivers), minimal data exposure,
-and no selling of family data.
+## Development
 
-## Stack
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
-- **Next.js** (App Router) + TypeScript + Tailwind CSS
-- **Supabase** — Postgres, Auth, and Row Level Security for privacy-by-design
-  data access
-- Deployed to a custom domain (dearkin.com)
-
-## Project structure
-
-- `app/` — Next.js routes and pages
-- `components/` — UI components
-- `lib/` — shared utilities and Supabase client
-- `supabase/migrations/` — database schema and RLS policies
-
-## Getting started
-
-```bash
-npm install
-cp .env.example .env.local   # fill in your Supabase URL + anon key
+```sh
+git clone <this-repository-url>
+cd <repository-name>
+npm i
 npm run dev
+```
 
-## How it was built
+## Built with
 
-Dearkin was built with AI-assisted development (Lovable, Claude, Cursor) —
-directing AI coding tools to implement the product, with human review and
-testing throughout. It started from a PRFAQ and full product spec before any
-code was written.
-
-## Status
-
-Personal project, live at https://dearkin.com. Actively evolving.
-
+- TanStack Start
+- TypeScript
+- React
+- Tailwind CSS
